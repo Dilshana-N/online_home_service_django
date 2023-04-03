@@ -1,0 +1,45 @@
+{% extends "customer/customer_base_.html" %}
+{% block content %}
+
+
+<div class="card" style="width: 65rem;">
+  <div class="card-body">
+    <h3 class="card-title"><center><u>Workers Data</u></center></h3>
+
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL</th>
+      <th scope="col">NAME</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">MOBILE</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">WORK_TYPE</th>
+      <th scope="col">PROFILE_PIC</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in data %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.name}}</td>
+        <td>{{i.address}}</td>
+         <td>{{i.mobile}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.work_type}}</td>
+<!--            <td>{{i.profilepic}}</td>-->
+      <td><img src="{{i.profile_pic.url }}" style="width:100px"></td>
+
+    </tr>
+{% endfor %}
+  </tbody>
+  </table>
+
+
+
+{% endblock %}
+
+
+  </div>
+</div>

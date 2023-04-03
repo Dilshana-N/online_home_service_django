@@ -1,0 +1,42 @@
+<!--there is a BOOK APPOINTMENT BUTTON FOR BOOKING-->
+{% extends "customer/customer_base_.html" %}
+{% block content %}
+
+<div class="card" style="width: 65rem;">
+  <div class="card-body">
+<h3 class="card-title"><center><u>Worker Schedule</u></center></h3>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">SL</th>
+    <th scope="col">worker</th>
+    <th scope="col">Date</th>
+    <th scope="col">Start_time</th>
+    <th scope="col">End_time</th>
+    <th scope="col">Book Appoinment</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  {% for n in view_schedule %}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{n.worker}}</td>
+    <td>{{n.date}}</td>
+    <td>{{n.start_time}}</td>
+     <td>{{n.end_time}}</td>
+    <td><a href="{% url 'appoinment_take_bycustomer' n.id %}" class="btn btn-primary">Book Appoinment</a> </td>
+
+    {% empty %}
+  </tr>
+  <tr>
+    <td colspan="7"><h3>No Results Found</h3></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+  </div>
+</div>

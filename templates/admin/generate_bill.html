@@ -1,0 +1,15 @@
+{% extends "admin/admin_base_.html" %}
+{% block content %}
+{% load crispy_forms_filters %}
+
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card" style="width: 20rem;">
+<h4><center><u>Generate Bill</u></center></h4>
+<form method="POST">
+  {% csrf_token %}
+  {{form|crispy}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  </div>
+</div>
+{% endblock %}

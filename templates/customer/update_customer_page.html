@@ -1,0 +1,48 @@
+{% extends "customer/customer_base_.html" %}
+{% block content %}
+
+
+<div class="card" style="width: 65rem;">
+  <div class="card-body">
+    <h3 class="card-title"><center><u>Your Data</u></center></h3>
+
+
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NAME</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">MOBILE</th>
+      <th scope="col">EMAIL</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in data %}
+    <tr>
+      <td>{{i.name}}</td>
+        <td>{{i.address}}</td>
+         <td>{{i.mobile}}</td>
+      <td>{{i.email}}</td>
+               <td><a href="{% url 'update_customer_data' i.id %}" class="btn btn-primary">UPDATE</a> </td>
+
+
+
+
+    </tr>
+{% endfor %}
+  </tbody>
+  </table>
+
+
+
+{% endblock %}
+
+
+  </div>
+</div>-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>

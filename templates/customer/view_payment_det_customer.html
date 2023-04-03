@@ -1,0 +1,47 @@
+<!--add payment method buttons-->
+
+{% extends 'customer/customer_base_.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card" style="width: 65rem;" >
+                <div class="card-body">
+                 <h3 class="card-title"><center><u>Payment Status</u></center></h3>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>SL NO.</th>
+                          <th>CUSTOMER NAME</th>
+                          <th>BILL DATE</th>
+                          <th>AMOUNT</th>
+                          <th>PAYMENT METHOD </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in a %}
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{ i.name }}</td>
+                          <td>{{ i.bill_date }}</td>
+                          <td>{{ i.amount }}</td>
+                          <td>
+                              {% if i.status == 0 %}
+
+                              <button type="button" class="btn btn-primary"><a href=" {% url 'pay_bill_online' i.id %} " class="dropdown-item">Pay Online</a></button>
+                              <button type="button" class="btn btn-primary"><a href=" {% url 'pay_in_direct' i.id %} " class="dropdown-item">Pay in Direct </a></button>
+
+                              {% else %}
+                        <button type="button" class="btn btn-success">Payment Confirmed</button>
+                              {% endif %}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+{% endblock %}

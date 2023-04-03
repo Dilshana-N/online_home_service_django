@@ -1,0 +1,55 @@
+{% extends 'admin/admin_base_.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card" style="width: 65rem;">
+                <div class="card-body">
+                 <h3 class="card-title"><center><u>Appoinment Confirmation</u></center></h3>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>SL NO.</th>
+                          <th>WORKER_NAME</th>
+                          <th>CUSTOMER_NAME
+                            <th>CUSTOMER_ADDRESS</th>
+                            <th>DATE</th>
+                          <th>STARTING TIME</th>
+                          <th>ENDING TIME</th>
+                          <th>Appointment</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in a %}
+                        <tr>
+                          <td>{{forloop.counter}}</td>
+                          <td>{{ i.schedule.worker }}</td>
+                          <td>{{ i.user }}</td>
+                            <td>{{ i.user.address}}</td>
+                            <td>{{ i.schedule.date }}</td>
+                          <td>{{ i.schedule.start_time }}</td>
+                          <td>{{ i.schedule.end_time }}</td>
+                          <td>
+                            {% if i.status == 0 %}
+                        <a type="button" class="btn btn-success" href="{% url 'approve_appointment' i.id %}">Accept</a>
+                            <form action="{% url 'reject_appointment' i.id %}" method="post" style="display: inline;" onsubmit="window.mytest()">
+                              {% csrf_token %}
+                              <input type="hidden" value="{{i.id}}"/>
+                              <button  class="btn btn-danger">Reject</button>
+                            </form>
+
+                        {% elif i.status == 1 %}
+                        <button type="button" class="btn btn-success">Approved</button>
+                         {% else %}
+                        <button type="button" class="btn btn-danger">Rejected</button>
+                              {% endif %}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+{% endblock %}

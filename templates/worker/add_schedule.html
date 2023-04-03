@@ -1,0 +1,15 @@
+{% extends "worker/worker_base_.html" %}
+{% block content %}
+{% load crispy_forms_filters %}
+
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+<h3 class="card-title"><center><u>Schedules</u></center></h3>
+<form method="POST">
+  {% csrf_token %}
+  {{form|crispy}}
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+  </div>
+</div>
+{% endblock %}

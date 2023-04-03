@@ -1,0 +1,40 @@
+
+
+{% extends "worker/worker_base_.html" %}
+{% block content %}
+
+<div class="card" style="width: 65rem;">
+  <div class="card-body">
+<h3 class="card-title"><center><u>Schedules</u></h3>
+<b></b>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">SL</th>
+    <th scope="col">worker</th>
+    <th scope="col">Date</th>
+    <th scope="col">Start_time</th>
+    <th scope="col">End_time</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for i in view_schedule %}
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{i.worker}}</td>
+
+    <td>{{i.date}}</td>
+    <td>{{i.start_time}}</td>
+     <td>{{i.end_time}}</td>
+    {% empty %}
+  </tr>
+  <tr>
+    <td colspan="7"><h3>No Results Found</h3></td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+  </div>
+</div>
